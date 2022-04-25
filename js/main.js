@@ -20,11 +20,22 @@ let dataBoxParse = JSON.parse((localStorage.getItem('users')))
 
 function signUp(){
     
+    if(dataBox.some(item => item.email === emailEL.value)){
+        emailEL.value = '';
+        usernameEL.value = '';
+        passwordEL.value = '';
+        confirmPasswordEL.value = '';
+        return alert('This email is already taken')
+    }
+    else if(dataBox.some(item => item.username === usernameEL.value)){
+        emailEL.value = '';
+        usernameEL.value = '';
+        passwordEL.value = '';
+        confirmPasswordEL.value = '';
+        return alert('This username is already taken')
+    }
    if(usernameEL.value === "" || emailEL.value === "" || passwordEL.value === "" || confirmPasswordEL.value === ""){
-    usernameEL.style.border ="1px solid red"
-    emailEL.style.border ="1px solid red"
-    passwordEL.style.border ="1px solid red"
-    confirmPasswordEL.style.border ="1px solid red"
+    
     }
     else if(usernameEL.value === username){
         alert('erfefcd')
@@ -34,15 +45,22 @@ function signUp(){
     }
     else if(!passwordEL.value.match(upperCase)){
         alert('Need 1 UpperCase length')
+        passwordEL.style.border ="1px solid red"
+        confirmPasswordEL.style.border ="1px solid red"
     }
     else if(!passwordEL.value.match(lowerCase)){
         alert('Need LowerCase lengths')
+        passwordEL.style.border ="1px solid red"
+        
     }
     else if(!passwordEL.value.match(nums)){
         alert('Need numbers')
+        passwordEL.style.border ="1px solid red"
+
     }
     else if(!passwordEL.value === confirmPasswordEL.value){
         alert('Another password in Second field')
+        confirmPasswordEL.style.border ="1px solid red"
     }
     else if(passwordEL.value.length <= 8){
         passwordEL.style.border ="1px solid red"
@@ -58,15 +76,8 @@ function signUp(){
        alert('Error')
     }
         console.log(dataBox);
-        // let dataBoxStr = localStorage.setItem('users', JSON.stringify(dataBox))
-
-        // const userExists = dataBoxParse.find(users =>JSON.stringify(users.username) === dataBoxStr)
-
-        // if(userExists){
-        //     return alert(' already exists')
-        // }
+        
 }
-
 
 function logIn(){
     if (dataBox.some(item => item.email === emailLoginEL.value && item.password === passwordLoginEl.value)){
@@ -88,3 +99,4 @@ function logIn(){
 
     }
 }
+// buvyctvkulbin;omkinoubyvghbijno
